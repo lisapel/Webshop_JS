@@ -86,6 +86,15 @@
     scroll-behavior: smooth;
   }
 }
+.form-control::-webkit-outer-spin-button,
+.form-control::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-control[type=number] {
+    -moz-appearance: textfield;
+}
 
 #productPage {
   display: flex;

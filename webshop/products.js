@@ -1,3 +1,4 @@
+
 const urlAPI = 'https://fakestoreapi.com/products/';
 
 fetch(urlAPI)
@@ -55,10 +56,10 @@ function productRender(data) {
     });
   });
 }
-
 function saveProduct(data) {
-  console.log(data);
-  localStorage.setItem('product', JSON.stringify(data));
+  let products = JSON.parse(localStorage.getItem('products')) || []; 
+  products.push(data); 
+  localStorage.setItem('products', JSON.stringify(products));
   console.log(localStorage);
   open('order.html', '_self');
 }
