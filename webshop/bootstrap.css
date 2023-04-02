@@ -123,14 +123,25 @@ footer p, footer ul{
   padding-left: 3em;
 }
 
+#trash{
+  border: none;
+  background-color: white;
+
+}
+#trash:hover{
+  color: black !important;
+}
+
+
 .orderDetails {
   display: flex;
-  justify-content: center;
-  padding: 2em;
   flex-direction: column;
   align-items: center;
 }
 
+#pDetails{
+  margin: 1em;
+}
 @media (max-width: 576px) { 
   .col-4 {
     flex: 0 0 auto;
