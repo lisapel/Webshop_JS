@@ -33,16 +33,9 @@ function productRender(data) {
 
   document.getElementById("productPage").innerHTML = output;
 
-  const viewButtons = Array.from(document.querySelectorAll('.view-btn'));
   const orderButtons = Array.from(document.querySelectorAll('.order-btn'));
 
-  viewButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      productDetailsRender(this.getAttribute('product'));
-      open('product-details.html', '_self');
 
-    });
-  });
 
   orderButtons.forEach(button => {
     button.addEventListener('click', function () {
@@ -61,5 +54,5 @@ function saveProduct(data) {
   products.push(data); 
   localStorage.setItem('products', JSON.stringify(products));
   console.log(localStorage);
-  open('order.html', '_self');
+  alert('Product is added to cart.');
 }
