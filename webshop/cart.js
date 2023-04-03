@@ -9,6 +9,7 @@ function cartRender() {
 
     products.forEach(product => {
         let totalProduct = product.price;
+        product.quantity = 1;
         output += `
   <div class="container">
   <div class="row">
@@ -30,7 +31,7 @@ function cartRender() {
               <div class="input-group">
               
                 <button class="btn btn-outline-secondary minus-btn" type="button" >-</button>
-                <input lol="${product.price}"type="number" class="form-control text-center quanPut"  value="1">
+                <input lol="${product.price}" product="${product.id}"type="number" class="form-control text-center quanPut"  value="${product.quantity}">
                 <button class="btn btn-outline-secondary plus-btn" type="button">+</button>
               </div>
             </div>
@@ -89,6 +90,15 @@ function cartRender() {
                 totalPerProduct.innerHTML = 'Total: $' + (price * quantity);
                 cartTotal -= parseInt(price);
                 document.getElementById('totalCost').innerHTML = 'Total: $' + cartTotal;
+
+                const productId = input.getAttribute('product');
+                products.forEach(product => {
+                if (product.id == productId) {
+                    product.quantity = quantity;
+                }
+            });
+            localStorage.setItem('products', JSON.stringify(products));
+        
             }
         });
     });
@@ -106,18 +116,25 @@ function cartRender() {
             totalPerProduct.innerHTML = 'Total: $' + (price * quantity);
             cartTotal += parseInt(price);
             document.getElementById('totalCost').innerHTML = 'Total: $' + cartTotal;
+
+            const productId = input.getAttribute('product');
+            products.forEach(product => {
+                if (product.id == productId) {
+                    product.quantity = quantity;
+                }
+            });
+            localStorage.setItem('products', JSON.stringify(products));
         });
     });
+   
 }
-
 document.getElementById('deleteAll').addEventListener('click', function () {
     localStorage.clear();
     cartRender();
 })
 
 document.getElementById('orderItems').addEventListener('click', function () {
-    open('order.html', '_self'); 
-    //fixa så att om två produkter i drop-down blir det två produkter här
+    open('order.html', '_self'); //fixa så att om två produkter i drop-down blir det två produkter här
 })
 
 
