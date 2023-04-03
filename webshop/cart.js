@@ -5,6 +5,7 @@ function cartRender() {
     const products = JSON.parse(localStorage.getItem('products')) || [];
     let output = "";
     let sum = 0;
+    let cartTotal = 0;
 
     products.forEach(product => {
         let totalProduct = product.price;
@@ -47,7 +48,10 @@ function cartRender() {
     });
     document.getElementById("cartHTML").innerHTML = output;
 
-    products.forEach(element => { sum += element.price });
+    products.forEach(element => {
+        cartTotal += element.price;
+        sum += element.price;
+    });
     document.getElementById('totalCost').innerHTML = 'Total: $' + sum;
 
     const deleteBtns = Array.from(document.querySelectorAll('.btn-danger'));
@@ -83,6 +87,8 @@ function cartRender() {
                 quantity--;
                 input.value = quantity;
                 totalPerProduct.innerHTML = 'Total: $' + (price * quantity);
+                cartTotal -= parseInt(price);
+                document.getElementById('totalCost').innerHTML = 'Total: $' + cartTotal;
             }
         });
     });
@@ -98,7 +104,8 @@ function cartRender() {
             quantity++;
             input.value = quantity;
             totalPerProduct.innerHTML = 'Total: $' + (price * quantity);
-
+            cartTotal += parseInt(price);
+            document.getElementById('totalCost').innerHTML = 'Total: $' + cartTotal;
         });
     });
 }
@@ -106,6 +113,11 @@ function cartRender() {
 document.getElementById('deleteAll').addEventListener('click', function () {
     localStorage.clear();
     cartRender();
+})
+
+document.getElementById('orderItems').addEventListener('click', function () {
+    open('order.html', '_self'); 
+    //fixa så att om två produkter i drop-down blir det två produkter här
 })
 
 
