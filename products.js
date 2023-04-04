@@ -58,7 +58,6 @@ function saveProduct(data) {
       products[i].quantity++;
       duplicate = true;
     }
-    
   }
   if(!duplicate){
     data.quantity=1;
