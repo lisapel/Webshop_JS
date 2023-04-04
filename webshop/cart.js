@@ -5,10 +5,10 @@ function cartRender() {
     const products = JSON.parse(localStorage.getItem('products')) || [];
     let output = "";
     let sum = 0;
-    let cartTotal = 0;
+    let cartTotal = JSON.parse(localStorage.getItem('total')) || 0;
 
     products.forEach(product => {
-        let totalProduct = product.price;
+        let totalProduct = product.price*product.quantity;
         output += `
   <div class="container">
   <div class="row">
@@ -50,11 +50,7 @@ function cartRender() {
 
     document.getElementById("cartHTML").innerHTML = output;
 
-    products.forEach(element => {
-        cartTotal += element.price;
-        sum += element.price;
-    });
-    document.getElementById('totalCost').innerHTML = 'Total: $' + sum;
+    
 
     const deleteBtns = Array.from(document.querySelectorAll('.btn-danger'));
 
@@ -64,7 +60,10 @@ function cartRender() {
         products.forEach((element, i) => {
             console.log(element.id);
             if (element.id == productId) {
-                products.splice(i, 1);
+              cartTotal -= element.price * element.quantity;
+              localStorage.setItem('total',cartTotal);
+
+              products.splice(i, 1);
             }
         });
 
@@ -129,6 +128,11 @@ function cartRender() {
             localStorage.setItem('total',cartTotal);
         });
     });
+
+    products.forEach(element => {
+        sum = cartTotal;
+    });
+    document.getElementById('totalCost').innerHTML = 'Total: $' + sum;
 }
 document.getElementById('deleteAll').addEventListener('click', function () {
     localStorage.clear();

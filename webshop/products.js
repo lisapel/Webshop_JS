@@ -52,12 +52,27 @@ function productRender(data) {
 function saveProduct(data) {
   let products = JSON.parse(localStorage.getItem('products')) || []; 
   let cartTotal = 0;
-  products.push(data); 
-  products.forEach(product=>{product.quantity=1;
-  cartTotal+=product.price;})
+  let duplicate= false;
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].id === data.id) {
+      products[i].quantity++;
+      duplicate = true;
+    }
+    
+  }
+  if(!duplicate){
+    data.quantity=1;
+    products.push(data);
+  }
+  products.forEach(product =>{cartTotal+=(product.price*product.quantity);})
+  
   localStorage.setItem('products', JSON.stringify(products));
-  localStorage.setItem('total',cartTotal);
+
+  localStorage.setItem('total', cartTotal);
 
   console.log(localStorage);
   alert('Product is added to cart.');
 }
+
+
+
