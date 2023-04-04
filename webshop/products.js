@@ -21,7 +21,7 @@ function productRender(data) {
                   <p class="card-text">${product.description}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button id="order" product="${product.id}" type="button" class="btn btn-sm btn-outline-secondary order-btn">Order</button>
+                      <button id="order" product="${product.id}" type="button" class="btn btn-sm btn-outline-secondary order-btn">Add to cart</button>
                       </div>
                     <div>$ ${product.price} </div>
                   </div>
@@ -51,8 +51,13 @@ function productRender(data) {
 }
 function saveProduct(data) {
   let products = JSON.parse(localStorage.getItem('products')) || []; 
+  let cartTotal = 0;
   products.push(data); 
+  products.forEach(product=>{product.quantity=1;
+  cartTotal+=product.price;})
   localStorage.setItem('products', JSON.stringify(products));
+  localStorage.setItem('total',cartTotal);
+
   console.log(localStorage);
   alert('Product is added to cart.');
 }

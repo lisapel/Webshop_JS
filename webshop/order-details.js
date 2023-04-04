@@ -33,5 +33,6 @@ function orderDetailsRender() {
 
       document.getElementById("order-info").innerHTML = output;
   }
+  document.getElementById('total').innerHTML = 'TOTAL: $' +localStorage.getItem('total');
   
   

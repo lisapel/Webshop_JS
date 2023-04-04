@@ -9,7 +9,6 @@ function cartRender() {
 
     products.forEach(product => {
         let totalProduct = product.price;
-        product.quantity = 1;
         output += `
   <div class="container">
   <div class="row">
@@ -45,8 +44,10 @@ function cartRender() {
   </div>
 </div>
 
+
   `;
     });
+
     document.getElementById("cartHTML").innerHTML = output;
 
     products.forEach(element => {
@@ -98,7 +99,7 @@ function cartRender() {
                 }
             });
             localStorage.setItem('products', JSON.stringify(products));
-        
+            localStorage.setItem('total',cartTotal);
             }
         });
     });
@@ -117,6 +118,7 @@ function cartRender() {
             cartTotal += parseInt(price);
             document.getElementById('totalCost').innerHTML = 'Total: $' + cartTotal;
 
+
             const productId = input.getAttribute('product');
             products.forEach(product => {
                 if (product.id == productId) {
@@ -124,17 +126,19 @@ function cartRender() {
                 }
             });
             localStorage.setItem('products', JSON.stringify(products));
+            localStorage.setItem('total',cartTotal);
         });
     });
-   
 }
 document.getElementById('deleteAll').addEventListener('click', function () {
     localStorage.clear();
     cartRender();
 })
 
+
+
 document.getElementById('orderItems').addEventListener('click', function () {
-    open('order.html', '_self'); //fixa så att om två produkter i drop-down blir det två produkter här
+    open('order.html', '_self'); 
 })
 
 
