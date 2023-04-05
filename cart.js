@@ -142,7 +142,14 @@ document.getElementById('deleteAll').addEventListener('click', function () {
 
 
 document.getElementById('orderItems').addEventListener('click', function () {
-    open('order.html', '_self'); 
+  if (localStorage.length>0){
+    open('order.html', '_self');
+  }else{
+    alert('Your cart is empty');
+  }
+     
+  
+    
 })
 
 
