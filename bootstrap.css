@@ -93,6 +93,7 @@ footer p, footer ul{
   }
 }
 
+
 #productPage {
   display: flex;
   padding-left: 5em;
@@ -226,6 +227,12 @@ h1,
 h1,
 .h1 {
   font-size: calc(1.375rem + 1.5vw);
+}
+
+@media (max-width:500px){
+  .hej{
+    font-size: 15px !important;
+  }
 }
 
 @media (min-width: 1200px) {

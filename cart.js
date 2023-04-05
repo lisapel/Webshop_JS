@@ -20,10 +20,10 @@ function cartRender() {
               <img src="${product.image}" class="img-fluid rounded-3" alt="">
             </div>
             <div class="col-6">
-              <p class="lead fw-normal mb-2">${product.title}</p>
-              <p class="lead  fw-normal mb-2">${product.category}</p>
-              <p class="lead  fw-normal mb-2">Each: $${product.price}</p>
-              <p id="totalPerProduct"class="lead  fw-normal mb-2">Total: $${totalProduct}</p>
+              <p class="lead fw-normal mb-2 hej">${product.title}</p>
+              <p class="lead  fw-normal mb-2 hej">${product.category}</p>
+              <p class="lead  fw-normal mb-2 hej">Each: $${product.price}</p>
+              <p id="totalPerProduct"class="lead  fw-normal mb-2 hej">Total: $${totalProduct}</p>
               <br>
               <p id="quant" class="lead fw-normal mb-2">Quantity: </p>
 
