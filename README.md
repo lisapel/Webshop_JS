@@ -1,9 +1,10 @@
-Group project WEBSHOP 
+WEBSHOP 
 
-Webshop built in JavaScript, CSS, HTML. 
+Webshop built in JavaScript, CSS, HTML. Group project. 
 
-REST-API from https://fakestoreapi.com/products/
 
 Individually built addon functionality for "Add To Cart".
+
+REST-API from https://fakestoreapi.com/products/
 
 
